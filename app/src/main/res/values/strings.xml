@@ -1,0 +1,15 @@
+<resources>
+    <!--App Name-->
+    <string name="app_name">AirportReservation</string>
+
+    <!--Buttons-->
+    <string name="create_account_button">Create Account</string>
+    <string name="reserve_seat_button">Reserve Seat</string>
+    <string name="cancel_reservation_button">Cancel Reservation</string>
+    <string name="manage_system_button">Manage System</string>
+    <string name="login_button">Log In</string>
+
+    <!--Hint Messages-->
+    <string name="username_hint">Username</string>
+    <string name="password_hint">Password</string>
+</resources>

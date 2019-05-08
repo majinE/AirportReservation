@@ -49,6 +49,7 @@ public class MainScreen extends AppCompatActivity {
             public void onClick(View v) {
                 Intent login = new Intent(MainScreen.this, LoginScreen.class);
                 login.putExtra("SessionID", cancelReserveLogin);
+                startActivity(login);
             }
         });
     }

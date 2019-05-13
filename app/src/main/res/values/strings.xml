@@ -14,10 +14,6 @@
     <string name="password_hint">Password</string>
     <string name="new_username_hint">New Username</string>
     <string name="new_password_hint">New Password</string>
-    <string name="confirm_password_hint">Confirm Password</string>
 
-    <!--Switch-->
-    <string name="regular_user">User</string>
-    <string name="admin_user">Admin</string>
 
 </resources>

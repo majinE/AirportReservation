@@ -49,7 +49,7 @@ public class AccountsItem {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("=-=-=-=-=-=-=-=\n");
-        sb.append(type).append(":").append(username).append(":").append(password).append("\n");
+        sb.append(accId).append(type).append(":").append(username).append(":").append(password).append("\n");
         return sb.toString();
     }
 }

@@ -17,7 +17,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginScreen" />
-        <activity android:name=".CreateAccount"></activity>
+        <activity android:name=".CreateAccount" />
+        <activity android:name=".ReservationScreen" />
+        <activity android:name=".CancelReservationScreen" />
+        <activity android:name=".ManageSystemLogs" />
+        <activity android:name=".ConfirmReservation"></activity>
     </application>
 
 </manifest>

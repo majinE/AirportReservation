@@ -30,7 +30,6 @@ public class AccountsLog {
 
     public String getLogString(){
         List<AccountsItem> logs = mAccountsLogHelper.getAccountsItems();
-
         StringBuilder sb = new StringBuilder();
         sb.append("Account Log\n");
         for(AccountsItem log : logs) {

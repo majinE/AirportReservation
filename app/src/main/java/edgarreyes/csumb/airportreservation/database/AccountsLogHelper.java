@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edgarreyes.csumb.airportreservation.AccountsItem;
-import edgarreyes.csumb.airportreservation.AccountsLog;
 import edgarreyes.csumb.airportreservation.database.AccountsSchema.AccountsLogTable;
 
 public class AccountsLogHelper extends SQLiteOpenHelper {
@@ -29,9 +28,11 @@ public class AccountsLogHelper extends SQLiteOpenHelper {
         db.execSQL("create table " + AccountsLogTable.NAME + " (" +
                    "_id integer primary key autoincrement , " +
                    AccountsLogTable.Cols.UUID + "," +
+                   AccountsLogTable.Cols.TRANSACTIONTYPE + "," +
                    AccountsLogTable.Cols.TYPE + "," +
                    AccountsLogTable.Cols.USERNAME + "," +
-                   AccountsLogTable.Cols.PASSWORD +
+                   AccountsLogTable.Cols.PASSWORD + "," +
+                   AccountsLogTable.Cols.DATE +
                    ")");
     }
 
@@ -70,9 +71,11 @@ public class AccountsLogHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
 
         cv.put(AccountsLogTable.Cols.UUID, log.getAccountsId().toString());
+        cv.put(AccountsLogTable.Cols.TRANSACTIONTYPE, log.getTransactionType());
         cv.put(AccountsLogTable.Cols.TYPE, log.getType());
         cv.put(AccountsLogTable.Cols.USERNAME, log.getUsername());
         cv.put(AccountsLogTable.Cols.PASSWORD, log.getPassword());
+        cv.put(AccountsLogTable.Cols.DATE, log.getDate().getTime());
 
         return cv;
     }

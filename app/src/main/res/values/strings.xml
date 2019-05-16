@@ -14,6 +14,13 @@
     <string name="password_hint">Password</string>
     <string name="new_username_hint">New Username</string>
     <string name="new_password_hint">New Password</string>
+    <string name="departure_location">Departure Location</string>
+    <string name="arrival_location">Arrival Location</string>
+    <string name="ticket_amount">Amount of Tickets</string>
+    <string name="create_reservation">Create Reservation</string>
 
+    <!--Text Views-->
+    <string name="accounts_log">Accounts Log</string>
+    <string name="flights_log">Flights Log</string>
 
 </resources>

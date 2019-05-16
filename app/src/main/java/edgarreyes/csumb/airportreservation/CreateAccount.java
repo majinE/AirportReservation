@@ -35,12 +35,11 @@ public class CreateAccount extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.activity_create_account);
 
         final AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
         final AlertDialog alertDialog = alertBuilder.create();
 
-        setContentView(R.layout.activity_create_account);
 
         newUsernameTextView = findViewById(R.id.NewUsernameEditText);
         newPasswordTextView = findViewById(R.id.NewPasswordEditText);
@@ -57,6 +56,8 @@ public class CreateAccount extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getAccounts();
+
+                AccountLogTextView.setText(accountsLog.getLogString());
 
                 String username = newUsernameTextView.getText().toString();
                 String password = newPasswordTextView.getText().toString();
@@ -82,13 +83,12 @@ public class CreateAccount extends AppCompatActivity {
                     if(validation(username) && validation(password)) {
                         accountsItem = getAccountsItemFromDisplay(username, password);
                         accountsLog.addLongItem(accountsItem);
-                        AccountLogTextView.setText(accountsLog.getLogString());
                         toaster("Account Successfully Created");
                         Intent accountSuccessful = new Intent(CreateAccount.this, MainScreen.class );
                         startActivity(accountSuccessful);
                     } else if(!validation(username) || !validation(password)) {
                         if(createAttempts < 1) {
-                            alertBuilder.setMessage("Invalid Username or Password");
+                            alertBuilder.setMessage("Invalid Username or Password Format.");
                             alertBuilder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -102,7 +102,7 @@ public class CreateAccount extends AppCompatActivity {
                 }
                 if(username.isEmpty() || password.isEmpty()) {
                     if(createAttempts < 1) {
-                        alertBuilder.setMessage("Invalid Username or Password");
+                        alertBuilder.setMessage("Username or Password have empty values.");
                         alertBuilder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -114,9 +114,16 @@ public class CreateAccount extends AppCompatActivity {
                     createAttempts++;
                 }
                 if(createAttempts == 2){
-                    toaster("Account Creation Unsuccessful");
-                    Intent intent = new Intent(CreateAccount.this, MainScreen.class );
-                    startActivity(intent);
+                    alertBuilder.setMessage("Error Creating Account");
+                    alertBuilder.setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Intent intent = new Intent(CreateAccount.this, MainScreen.class );
+                            startActivity(intent);
+                            alertDialog.dismiss();
+                        }
+                    });
+                    alertBuilder.show();
                 }
             }
         });
@@ -125,11 +132,10 @@ public class CreateAccount extends AppCompatActivity {
     private AccountsItem getAccountsItemFromDisplay(String username, String password) {
         AccountsItem account = new AccountsItem();
 
-        account.setType("USER");
+        account.setTransactionType("new account");
+        account.setType("user");
         account.setUsername(username);
         account.setPassword(password);
-
-        toaster("Account Created");
 
         return account;
 
